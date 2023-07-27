@@ -26,28 +26,23 @@ module BuildPattern
     end
 
     def run
-      exit(1) unless valid?
-
-      puts ['\b(', patterns.sort_by { |value| [-value.length, value] }.join("|"), ')\b'].join
-    end
-
-    def valid?
-      patterns.all? do |pattern|
-        /#{pattern}/
-      rescue StandardError => e
-        warn "#{e.class}: #{e}"
-        nil
+      errors = topics.flat_map(&:errors)
+      if errors.any?
+        warn errors
+        exit(1)
       end
+
+      puts ['\b(', sorted_patterns.join("|"), ')\b'].join
     end
 
-    def patterns
-      @patterns ||= topics.values.flatten
+    def sorted_patterns
+      topics.flat_map(&:patterns).sort_by { |value| [-value.length, value] }
     end
 
     def topics
-      topics_hash = YAML.load_file(topic_file, aliases: true).reject { |k, _| k.start_with?(".") }
-      topics_hash.transform_values do |patterns|
-        patterns.map { |pattern| Array(pattern).join }
+      @topics ||= begin
+        topics_hash = YAML.load_file(topic_file, aliases: true)
+        Topic.from_hash(topics_hash.reject { |k, _| k.start_with?(".") })
       end
     end
 
@@ -57,6 +52,31 @@ module BuildPattern
 
     def self.run(...)
       new(...).run
+    end
+  end
+
+  class Topic
+    attr_reader :name, :patterns
+
+    def initialize(name, patterns:)
+      @name = name
+      @patterns = patterns
+    end
+
+    def self.from_hash(topics)
+      topics.map do |name, patterns|
+        patterns = patterns.map { |pattern| Array(pattern).join }
+        new(name, patterns:)
+      end
+    end
+
+    def errors
+      patterns.map do |pattern|
+        Regexp.new(pattern)
+        nil
+      rescue RegexpError => e
+        "#{e.class}: #{e} for #{name.inspect}"
+      end.compact
     end
   end
 end
