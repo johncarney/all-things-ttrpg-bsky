@@ -29,7 +29,7 @@ RSpec.describe "topics.yml" do
   YAML.load_file(Pathname("topics.yml"), aliases: true).except("Macros").each do |category, topics|
     topics.each do |topic, patterns|
       patterns.map { |pattern| Array(pattern).join }.each do |pattern|
-        describe "#{pattern.inspect} for #{category.downcase} #{topic.inspect}" do
+        describe "'#{pattern}' for #{category.downcase} #{topic.inspect}" do
           subject { pattern }
 
           it { is_expected.to be_a_valid_regular_expression }
