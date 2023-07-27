@@ -70,8 +70,8 @@ System:
     - [Cepheus, *the-rpg]
 
   Coyote & Crow:
-    - [Coyote\s*(&|and)\s*Crow, *optional-rpg]
-    - ['C[&N]C', *optional-rpg]
+    - Coyote\s*(&|and)\s*Crow
+    - 'C[&N]C'
 
   CY_BORG:
     - CY_BORG
