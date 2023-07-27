@@ -16,6 +16,31 @@ Generic topic:
     - Pen\s*(-?and-?|&)\s*Paper\s*RPGs?
     - Juegos\s*de\s*rol(\s*de\s*mesa)?
 
+# SHOWS
+
+Show:
+  Dimension 20:
+    - Dimension\s*20
+
+  Dungeons & Drag Queens:
+    - Dungeons\s*(&|and)\s*Drag(\s*Queens?)?
+    - 'D[&n]DQ'
+
+  Candela Obscura:
+    - Candela\s*Obscura
+
+  Critical Role:
+    - Critical\s*Role
+
+  Glass Cannon Network:
+    - Glass\s*Cannon\s*(Network|Pod(cast?))
+
+  Children of Éarte:
+    - 'Children\s*of\s*[ÉE]art[eé]'
+
+  Relics & Rarities:
+    - Relics\s*(&|and)\s*Rarities
+
 System:
   Apocalypse World:
     - Apocalypse\s*World
@@ -258,28 +283,3 @@ System:
   Monster of the Week:
     - [Monster\s*of\s*the\s*Week, *optional-rpg]
     - [MotW, *optional-rpg]
-
-# SHOWS
-
-Show:
-  Dimension 20:
-    - Dimension\s*20
-
-  Dungeons & Drag Queens:
-    - Dungeons\s*(&|and)\s*Drag(\s*Queens?)?
-    - 'D[&n]DQ'
-
-  Candela Obscura:
-    - Candela\s*Obscura
-
-  Critical Role:
-    - Critical\s*Role
-
-  Glass Cannon Network:
-    - Glass\s*Cannon\s*(Network|Pod(cast?))
-
-  Children of Éarte:
-    - 'Children\s*of\s*[ÉE]art[eé]'
-
-  Relics & Rarities:
-    - Relics\s*(&|and)\s*Rarities
