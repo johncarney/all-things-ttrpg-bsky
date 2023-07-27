@@ -2,8 +2,8 @@ name: Generate regular expression
 run-name: ${{ github.actor }} is generating the regular expression
 on:
   workflow_run:
-    workflow: [Validate topics]
-    types:    [completed]
+    workflows: [Validate topics]
+    types:     [completed]
 jobs:
   generate-regex:
     runs-on: ubuntu-latest
