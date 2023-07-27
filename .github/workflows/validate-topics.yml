@@ -1,4 +1,4 @@
-name: validate-topics
+name: Validate topics
 run-name: ${{ github.actor }} is validating topics
 on: [push]
 jobs:

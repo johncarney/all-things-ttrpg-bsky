@@ -1,9 +1,13 @@
-name: generate-regex
+name: Generate regular expression
 run-name: ${{ github.actor }} is generating the regular expression
-on: [push]
+on:
+  workflow_run:
+    workflow: [Validate topics]
+    types:    [completed]
 jobs:
   generate-regex:
     runs-on: ubuntu-latest
+    if: ${{ github.event.workflow_run.conclusion == "success" }}
     steps:
       - uses: actions/checkout@v3
       - name: Setup Ruby 3.2
