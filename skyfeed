@@ -1,0 +1,92 @@
+#!/usr/bin/env ruby
+# frozen_string_literal: true
+
+require "optparse"
+require "pathname"
+require "yaml"
+
+module Skyfeed
+  class Options
+    class << self
+      def parser
+        ::OptionParser.new do |opts|
+          opts.banner = <<~USAGE
+            Usage: skyfeed TOPICFILE [OPTIONS]
+          USAGE
+
+          opts.on "--validate", "-v", "Validate the topic file"
+          opts.on "--help", -"h",     "Prints this help" do
+            puts opts
+            exit
+          end
+        end
+      end
+
+      def parse(argv)
+        arguments = argv.dup
+        options = {}
+        parser.parse!(arguments, into: options)
+        [arguments, options.transform_keys { |key| key.to_s.tr("-", "_").to_sym }]
+      end
+    end
+  end
+
+  class App
+    attr_reader :topic_file
+
+    def initialize(topic_file, validate: false)
+      @topic_file = Pathname(topic_file)
+      @validate = validate
+    end
+
+    def run
+      exit(1) unless valid?
+
+      if validate?
+        puts "All terms are valid regular expressions"
+        exit
+      end
+
+      patterns = categories.values.flat_map(&:values).sort_by { |pattern| -pattern.length }
+      pattern = ['\b(', patterns.join("|"), ')\b'].join
+      puts pattern
+    end
+
+    def valid?
+      categories.all? do |category, topics|
+        topics.all? do |topic, patterns|
+          patterns.all? do |pattern|
+            /#{pattern}/
+          rescue StandardError => e
+            warn "#{category} #{topic.inspect}: #{e}"
+            nil
+          end
+        end
+      end
+    end
+
+    def categories
+      @categories ||= begin
+        cats = YAML.load_file(topic_file, aliases: true).except("Macros")
+        cats.transform_values do |topics|
+          topics.transform_values do |patterns|
+            patterns.map { |pattern| Array(pattern).join }
+          end
+        end
+      end
+    end
+
+    def validate?
+      @validate
+    end
+
+    def self.run(...)
+      new(...).run
+    end
+  end
+end
+
+if $PROGRAM_NAME == __FILE__
+  arguments, options = Skyfeed::Options.parse(ARGV)
+  Skyfeed::App.run(*arguments, **options)
+end
