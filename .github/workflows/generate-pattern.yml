@@ -1,0 +1,14 @@
+name: generate-regex
+run-name: ${{ github.actor }} is generating the regular expression
+on: [push]
+jobs:
+  generate-regex:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Setup Ruby 3.2
+        uses: ruby/setup-ruby@ec02537da5712d66d4d50a0f33b7eb52773b5ed1
+        with:
+          ruby-version: "3.2"
+      - name: Generate regular expression
+        run: ./skyfeed skyfeed-topics.yml
