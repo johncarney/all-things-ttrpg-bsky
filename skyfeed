@@ -6,28 +6,14 @@ require "pathname"
 require "yaml"
 
 module Skyfeed
-  class Options
-    class << self
-      def parser
-        ::OptionParser.new do |opts|
-          opts.banner = <<~USAGE
-            Usage: skyfeed TOPICFILE [OPTIONS]
-          USAGE
+  OPTIONS = proc do |opts|
+    opts.banner = <<~USAGE
+      Usage: skyfeed TOPICFILE [OPTIONS]
+    USAGE
 
-          opts.on "--validate", "-v", "Validate the topic file"
-          opts.on "--help", -"h",     "Prints this help" do
-            puts opts
-            exit
-          end
-        end
-      end
-
-      def parse(argv)
-        arguments = argv.dup
-        options = {}
-        parser.parse!(arguments, into: options)
-        [arguments, options.transform_keys { |key| key.to_s.tr("-", "_").to_sym }]
-      end
+    opts.on "--help", -"h", "Prints this help" do
+      puts opts
+      exit
     end
   end
 
@@ -42,14 +28,7 @@ module Skyfeed
     def run
       exit(1) unless valid?
 
-      if validate?
-        puts "All terms are valid regular expressions"
-        exit
-      end
-
-      patterns = categories.values.flat_map(&:values).sort_by { |pattern| -pattern.length }
-      pattern = ['\b(', patterns.join("|"), ')\b'].join
-      puts pattern
+      puts ['\b(', patterns.join("|"), ')\b'].join
     end
 
     def valid?
@@ -63,6 +42,12 @@ module Skyfeed
           end
         end
       end
+    end
+
+    def patterns
+      categories.values.flat_map(&:values).flat_map do |patterns|
+        patterns.map { |pattern| Array(pattern).join }
+      end.sort_by(&:length).reverse
     end
 
     def categories
@@ -87,6 +72,9 @@ module Skyfeed
 end
 
 if $PROGRAM_NAME == __FILE__
-  arguments, options = Skyfeed::Options.parse(ARGV)
+  arguments = ARGV.dup
+  options = {}
+  OptionParser.new(&Skyfeed::OPTIONS).parse!(arguments, into: options)
+  options.transform_keys! { |key| key.to_s.tr("-", "_").to_sym }
   Skyfeed::App.run(*arguments, **options)
 end
