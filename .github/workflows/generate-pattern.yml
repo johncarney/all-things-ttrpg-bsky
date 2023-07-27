@@ -17,4 +17,4 @@ jobs:
         with:
           ruby-version: "3.2"
       - name: Generate regular expression
-        run: ./skyfeed skyfeed-topics.yml
+        run: ./skyfeed topics.yml

@@ -4,7 +4,7 @@ run-name: Validating topics
 on:
   push:
     branches: [main]
-    paths:    [skyfeed-topics.yml]
+    paths:    [topics.yml]
 
 jobs:
   validate-topics:
@@ -16,4 +16,4 @@ jobs:
         with:
           ruby-version: "3.2"
       - name: Validate topics
-        run: ./skyfeed skyfeed-topics.yml --validate
+        run: ./skyfeed topics.yml --validate
