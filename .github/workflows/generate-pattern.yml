@@ -3,7 +3,7 @@ run-name: Generating the regular expression
 
 on:
   workflow_run:
-    workflows: [Validate topics]
+    workflows: [Run tests]
     types:     [completed]
 
 jobs:

@@ -1,5 +1,5 @@
-name: Validate topics
-run-name: Validating topics
+name: Run tests
+run-name: Running tests
 
 on:
   push:
@@ -7,7 +7,7 @@ on:
     paths:    [topics.yml]
 
 jobs:
-  validate-topics:
+  run-tests:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -15,5 +15,7 @@ jobs:
         uses: ruby/setup-ruby@ec02537da5712d66d4d50a0f33b7eb52773b5ed1
         with:
           ruby-version: "3.2"
-      - name: Validate topics
-        run: ./skyfeed topics.yml --validate
+      - name: Install dependencies
+        run:  bundle install
+      - name: Run tests
+        run:  bundle exec rspec
