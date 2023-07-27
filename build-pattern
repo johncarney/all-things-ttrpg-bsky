@@ -1,0 +1,70 @@
+#!/usr/bin/env ruby
+# frozen_string_literal: true
+
+require "optparse"
+require "pathname"
+require "yaml"
+
+module BuildPattern
+  OPTIONS = proc do |opts|
+    opts.banner = <<~USAGE
+      Usage: build-pattern TOPICFILE [OPTIONS]
+    USAGE
+
+    opts.on "--help", -"h", "Prints this help" do
+      puts opts
+      exit
+    end
+  end
+
+  class App
+    attr_reader :topic_file
+
+    def initialize(topic_file, validate: false)
+      @topic_file = Pathname(topic_file)
+      @validate = validate
+    end
+
+    def run
+      exit(1) unless valid?
+
+      puts ['\b(', patterns.sort_by { |value| [-value.length, value] }.join("|"), ')\b'].join
+    end
+
+    def valid?
+      patterns.all? do |pattern|
+        /#{pattern}/
+      rescue StandardError => e
+        warn "#{e.class}: #{e}"
+        nil
+      end
+    end
+
+    def patterns
+      @patterns ||= topics.values.flatten
+    end
+
+    def topics
+      topics_hash = YAML.load_file(topic_file, aliases: true).reject { |k, _| k.start_with?(".") }
+      topics_hash.transform_values do |patterns|
+        patterns.map { |pattern| Array(pattern).join }
+      end
+    end
+
+    def validate?
+      @validate
+    end
+
+    def self.run(...)
+      new(...).run
+    end
+  end
+end
+
+if $PROGRAM_NAME == __FILE__
+  arguments = ARGV.dup
+  options = {}
+  OptionParser.new(&BuildPattern::OPTIONS).parse!(arguments, into: options)
+  options.transform_keys! { |key| key.to_s.tr("-", "_").to_sym }
+  BuildPattern::App.run(*arguments, **options)
+end

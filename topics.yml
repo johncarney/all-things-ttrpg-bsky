@@ -1,282 +1,279 @@
 ---
 
-# Convenient "macros" that can be included in other patterns. To include a
+# Convenient macros that can be included in other patterns. To include a
 # macro in a pattern, put the pattern in an array along with the macro preceded
 # by a '*'. Example: [Shadowrun, *the-rpg]. This will expand to
 # 'Shadowrun(\s*:)?(\s*the)?\s*RPG'
-Macros:
+.macros:
   - &the-rpg (\s*:)?(\s*the)?\s*RPG # matches "RPG", ": RPG", and "the RPG".
 
-Generic topic:
-  Tabletop RPGs:
-    - TTRPGs?
-    - Tabletop\s*RPGs?
-    - Tabletop\s*Gam(er?s?|ing)         # This might include board games?
-    - Pen\s*(-?and-?|&)\s*Paper\s*RPGs?
-    - Juegos\s*de\s*rol(\s*de\s*mesa)?
+Tabletop RPGs:
+  - TTRPGs?
+  - Tabletop\s*RPGs?
+  - Tabletop\s*Gam(er?s?|ing)         # This might include board games?
+  - Pen\s*(-?and-?|&)\s*Paper\s*RPGs?
+  - Juegos\s*de\s*rol(\s*de\s*mesa)?
 
-Show:
-  Dimension 20:
-    - Dimension\s*20
+Dimension 20:
+  - Dimension\s*20
 
-  Dungeons & Drag Queens:
-    - Dungeons\s*(&|and)\s*Drag(\s*Queens?)?
-    - 'D[&n]DQ'
+Dungeons & Drag Queens:
+  - Dungeons\s*(&|and)\s*Drag(\s*Queens?)?
+  - 'D[&n]DQ'
 
-  Candela Obscura:
-    - Candela\s*Obscura
+Candela Obscura:
+  - Candela\s*Obscura
 
-  Critical Role:
-    - Critical\s*Role
+Critical Role:
+  - Critical\s*Role
 
-  Glass Cannon Network:
-    - Glass\s*Cannon\s*(Network|Pod(cast?))
+Glass Cannon Network:
+  - Glass\s*Cannon\s*(Network|Pod(cast?))
 
-  Children of Éarte:
-    - 'Children\s*of\s*[ÉE]art[eé]'
+Children of Éarte:
+  - 'Children\s*of\s*[ÉE]art[eé]'
 
-  Relics & Rarities:
-    - Relics\s*(&|and)\s*Rarities
+Relics & Rarities:
+  - Relics\s*(&|and)\s*Rarities
 
-System:
-  Apocalypse World:
-    - Apocalypse\s*World
+Apocalypse World:
+  - Apocalypse\s*World
 
-  Blades in the Dark:
-    - Blades\s*in\s*the\s*Dark
-    - BitD
+Blades in the Dark:
+  - Blades\s*in\s*the\s*Dark
+  - BitD
 
-  Blue Planet:
-    - Blue\s*Planet(\s*:)?\s*Recontact
-    - [Blue\s*Planet, *the-rpg]
+Blue Planet:
+  - Blue\s*Planet(\s*:)?\s*Recontact
+  - [Blue\s*Planet, *the-rpg]
 
-  Brindlewood Bay:
-    - Brindlewood\s*Bay
+Brindlewood Bay:
+  - Brindlewood\s*Bay
 
-  Cairn:
-    - Cairn(:?(\s*:)?(\s*the)\s*RPG|\s*2e)
+Cairn:
+  - Cairn(:?(\s*:)?(\s*the)\s*RPG|\s*2e)
 
-  Call of Cthulhu:
-    - Call\s*of\s*Cthulhu
-    - CoC
+Call of Cthulhu:
+  - Call\s*of\s*Cthulhu
+  - CoC
 
-  Candela Obscura:
-    - [Candela\s*Obscura, *the-rpg]
+Candela Obscura RPG:
+  - [Candela\s*Obscura, *the-rpg]
 
-  Cepheus Engine:
-    - 'Cepheus\s*(Engine|Deluxe)'
-    - [Cepheus, *the-rpg]
+Cepheus Engine:
+  - 'Cepheus\s*(Engine|Deluxe)'
+  - [Cepheus, *the-rpg]
 
-  Coyote & Crow:
-    - Coyote\s*(&|and)\s*Crow
-    - 'C[&N]C'
+Coyote & Crow:
+  - Coyote\s*(&|and)\s*Crow
+  - 'C[&N]C'
 
-  CY_BORG:
-    - CY_BORG
+CY_BORG:
+  - CY_BORG
 
-  Mörk Borg:
-    - 'M[öo]rk\s*Borg'
+Mörk Borg:
+  - 'M[öo]rk\s*Borg'
 
-  Pirate Borg:
-    - Pirate\s*Borg
+Pirate Borg:
+  - Pirate\s*Borg
 
-  Cyberpunk:
-    - Cyberpunk(\s*(2020|Red))
-    - [Cyberpunk, *the-rpg]
+Cyberpunk:
+  - Cyberpunk(\s*(2020|Red))
+  - [Cyberpunk, *the-rpg]
 
-  Daggerheart:
-    - Daggerheart
+Daggerheart:
+  - Daggerheart
 
-  Delta Green:
-    - Delta\s*Green
+Delta Green:
+  - Delta\s*Green
 
-  Dungeons & Dragons:
-    - Dungeons\s*(and|&)\s*Dragons
-    - 'A?D[n&]D\s*([1245]|3(\.5)?)e?'
-    - 'A?D[n&]D'
-    - 5e
-    - Dragones\s*y\s*Mazmorras
-    - DyD
+Dungeons & Dragons:
+  - Dungeons\s*(and|&)\s*Dragons
+  - 'A?D[n&]D\s*([1245]|3(\.5)?)e?'
+  - 'A?D[n&]D'
+  - 5e
+  - Dragones\s*y\s*Mazmorras
+  - DyD
 
-  Dungeon Crawl Classics:
-    - Dungeon\s*Crawl\s*Classics
-    - DCC
+Dungeon Crawl Classics:
+  - Dungeon\s*Crawl\s*Classics
+  - DCC
 
-  Dungeon World:
-    - Dungeon\s*World
+Dungeon World:
+  - Dungeon\s*World
 
-  EZD6:
-    - EZ\s*D6
+EZD6:
+  - EZ\s*D6
 
-  Fantasy Age:
-    - Fantasy\s*Age
+Fantasy Age:
+  - Fantasy\s*Age
 
-  Five Torches Deep:
-    - '(Five|5)\s*Torches\s*Deep'
-    - '[F5]TD'
+Five Torches Deep:
+  - '(Five|5)\s*Torches\s*Deep'
+  - '[F5]TD'
 
-  Forbidden Lands:
-    - Forbidden\s*Lands
+Forbidden Lands:
+  - Forbidden\s*Lands
 
-  Forged in the Dark:
-    - Forged\s*in\s*the\s*Dark
-    - FitD
+Forged in the Dark:
+  - Forged\s*in\s*the\s*Dark
+  - FitD
 
-  Gamma World:
-    - Gamma\s*World
+Gamma World:
+  - Gamma\s*World
 
-  Illuminated Worlds:
-    - Illuminated\s*Worlds
+Illuminated Worlds:
+  - Illuminated\s*Worlds
 
-  Knave:
-    - [Knave, *the-rpg]
-    - Knave\s*[12]e?
+Knave:
+  - [Knave, *the-rpg]
+  - Knave\s*[12]e?
 
-  Lamentations of the Flame Princess:
-    - Lamentations\s*of\s*the\s*Flame\s*Princess
-    - LoftFP
+Lamentations of the Flame Princess:
+  - Lamentations\s*of\s*the\s*Flame\s*Princess
+  - LoftFP
 
-  Mothership:
-    - Mothership
+Mothership:
+  - Mothership
 
-  Neoclassical Geek Revival:
-    - Neoclassical\s*Geek\s*Revival
-    - NGR
+Neoclassical Geek Revival:
+  - Neoclassical\s*Geek\s*Revival
+  - NGR
 
-  Old School Essentials:
-    - Old(-|\s*)School\s*Essentials
-    - OSE
+Old School Essentials:
+  - Old(-|\s*)School\s*Essentials
+  - OSE
 
-  Old School Renaissance:
-    - Old(-|\s*)School\s*(Renaissance|Revival)
-    - OSR
+Old School Renaissance:
+  - Old(-|\s*)School\s*(Renaissance|Revival)
+  - OSR
 
-  Pathfinder:
-    - Pathfinder(\s*[12]e?)?
-    - PF[12]e?
-    - '#PF'
+Pathfinder:
+  - Pathfinder(\s*[12]e?)?
+  - PF[12]e?
+  - '#PF'
 
-  Powered by the Apocalypse:
-    - Powered\s*by\s*the\s*Apocalypse
-    - PbtA
+Powered by the Apocalypse:
+  - Powered\s*by\s*the\s*Apocalypse
+  - PbtA
 
-  Public Access:
-    - [Public\s*Access, *the-rpg]
+Public Access:
+  - [Public\s*Access, *the-rpg]
 
-  Root RPG:
-    - [Root, *the-rpg]
+Root RPG:
+  - [Root, *the-rpg]
 
-  RuneQuest:
-    - RuneQuest
+RuneQuest:
+  - RuneQuest
 
-  Savage Worlds:
-    - Savage\s*Worlds
-    - SW(ADE|D)
+Savage Worlds:
+  - Savage\s*Worlds
+  - SW(ADE|D)
 
-  Shadowdark:
-    - Shadowdark
+Shadowdark:
+  - Shadowdark
 
-  Shadowrun:
-    - [Shadowrun, *the-rpg]
+Shadowrun:
+  - [Shadowrun, *the-rpg]
 
-  Skyrealms of Jorune:
-    - Sky\s*realms\s*of\s*Jorune
-    - Jorune
+Skyrealms of Jorune:
+  - Sky\s*realms\s*of\s*Jorune
+  - Jorune
 
-  Starfinder:
-    - Starfinder
+Starfinder:
+  - Starfinder
 
-  Stars Without Number:
-    - Stars\s*Without\s*Number
+Stars Without Number:
+  - Stars\s*Without\s*Number
 
-  Worlds Without Number:
-    - Worlds\s*Without\s*Number
+Worlds Without Number:
+  - Worlds\s*Without\s*Number
 
-  Symbaroum:
-    - Symbaroum
+Symbaroum:
+  - Symbaroum
 
-  Tales from the Loop:
-    - [Tales\s*from\s*the\s*Loop, *the-rpg]
-    - [TftL, *the-rpg]
+Tales from the Loop:
+  - [Tales\s*from\s*the\s*Loop, *the-rpg]
+  - [TftL, *the-rpg]
 
-  Tales of the Valiant:
-    - 'Tales\s*of(\s*the)?\s*Valiant'
-    - TotV
-    - [ToV, *the-rpg]
+Tales of the Valiant:
+  - 'Tales\s*of(\s*the)?\s*Valiant'
+  - TotV
+  - [ToV, *the-rpg]
 
-  The Between:
-    - The\s*Between
+The Between:
+  - The\s*Between
 
-  The Silt Verses:
-    - ['(The\s*)?Silt\s*Verses', *the-rpg]
+The Silt Verses:
+  - ['(The\s*)?Silt\s*Verses', *the-rpg]
 
-  Thirsty Sword Lesbians:
-    - Thirsty\s*Sword\s*Lesbians
-    - TSL
+Thirsty Sword Lesbians:
+  - Thirsty\s*Sword\s*Lesbians
+  - TSL
 
-  Traveller:
-    - ['Travell?er', *the-rpg]
+Traveller:
+  - ['Travell?er', *the-rpg]
 
-  Trophy:
-    - Trophy\s*(Dark|Gold|(:\s*)?(the\s*)?RPG)
+Trophy:
+  - Trophy\s*(Dark|Gold|(:\s*)?(the\s*)?RPG)
 
-  Urban Shadows:
-    - Urban\s*Shadows
+Urban Shadows:
+  - Urban\s*Shadows
 
-  "Vampire: the Masquerade":
-    - Vampire:?\s*the\s*Masquerade
-    - V:?tM
-    - Vamily
+"Vampire: the Masquerade":
+  - Vampire:?\s*the\s*Masquerade
+  - V:?tM
+  - Vamily
 
-  Wanderhome:
-    - Wanderhome
+Wanderhome:
+  - Wanderhome
 
-  World of Dungeons:
-    - World\s*of\s*Dungeons
+World of Dungeons:
+  - World\s*of\s*Dungeons
 
-  Zweihänder:
-    - 'Zweih[aä]nder'
+Zweihänder:
+  - 'Zweih[aä]nder'
 
-  Top Secret:
-    - [Top\s*Secret, *the-rpg]
+Top Secret:
+  - [Top\s*Secret, *the-rpg]
 
-  Vast Grimm:
-    - Vast\s*Grimm
+Vast Grimm:
+  - Vast\s*Grimm
 
-  Paranoia:
-    - [Paranoia, *the-rpg]
+Paranoia:
+  - [Paranoia, *the-rpg]
 
-  Star Frontiers:
-    - Star\s*Frontiers
+Star Frontiers:
+  - Star\s*Frontiers
 
-  The Witcher:
-    - [The\s*Witcher, *the-rpg]
+The Witcher:
+  - [The\s*Witcher, *the-rpg]
 
-  Troika!:
-    - 'Troika!?'
+Troika!:
+  - 'Troika!?'
 
-  Aquelarre:
-    - Aquelarre
+Aquelarre:
+  - Aquelarre
 
-  Caucho y Chromo:
-    - Caucho\s*y\s*Chromo
+Caucho y Chromo:
+  - Caucho\s*y\s*Chromo
 
-  El Resurgir del Dragón:
-    - 'El\s*Resurgir\s*del\s*Drag[oó]n'
-    - 'ERDD'
+El Resurgir del Dragón:
+  - 'El\s*Resurgir\s*del\s*Drag[oó]n'
+  - 'ERDD'
 
-  Cultos Innombrables:
-    - Cultos\s*Innombrables
+Cultos Innombrables:
+  - Cultos\s*Innombrables
 
-  World of Darkness:
-    - World\s*of\s*Darkness
-    - WoD
-    - Mundo\s*de\s*Tinieblas
-    - MdT
+World of Darkness:
+  - World\s*of\s*Darkness
+  - WoD
+  - Mundo\s*de\s*Tinieblas
+  - MdT
 
-  FishBlade:
-    - [Fish\s*Blade, *the-rpg]
+FishBlade:
+  - [Fish\s*Blade, *the-rpg]
 
-  Monster of the Week:
-    - Monster\s*of\s*the\s*Week
-    - MotW
+Monster of the Week:
+  - Monster\s*of\s*the\s*Week
+  - MotW

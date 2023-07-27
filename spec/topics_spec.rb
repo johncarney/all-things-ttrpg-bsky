@@ -26,14 +26,12 @@ RSpec.describe "topics.yml" do
     end
   end
 
-  YAML.load_file(Pathname("topics.yml"), aliases: true).except("Macros").each do |category, topics|
-    topics.each do |topic, patterns|
-      patterns.map { |pattern| Array(pattern).join }.each do |pattern|
-        describe "'#{pattern}' for #{category.downcase} #{topic.inspect}" do
-          subject { pattern }
+  YAML.load_file(Pathname("topics.yml"), aliases: true).reject { |k, _| k.start_with?(".") }.each do |topic, patterns|
+    patterns.map { |pattern| Array(pattern).join }.each do |pattern|
+      describe "'#{pattern}' for #{topic.inspect}" do
+        subject { pattern }
 
-          it { is_expected.to be_a_valid_regular_expression }
-        end
+        it { is_expected.to be_a_valid_regular_expression }
       end
     end
   end
