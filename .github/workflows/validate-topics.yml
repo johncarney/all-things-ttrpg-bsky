@@ -1,6 +1,11 @@
 name: Validate topics
-run-name: ${{ github.actor }} is validating topics
-on: [push]
+run-name: Validating topics
+
+on:
+  push:
+    branches: [main]
+    paths:    [skyfeed-topics.yml]
+
 jobs:
   validate-topics:
     runs-on: ubuntu-latest
