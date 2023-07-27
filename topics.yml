@@ -1,18 +1,17 @@
 ---
 
 # Convenient "macros" that can be included in other patterns. To include a
-# macro in a patter, put the pattern in an array along with the macro preceded
+# macro in a pattern, put the pattern in an array along with the macro preceded
 # by a '*'. Example: [Shadowrun, *the-rpg]. This will expand to
 # 'Shadowrun(\s*:)?(\s*the)?\s*RPG'
 Macros:
-  - &the-rpg      (\s*:)?(\s*the)?\s*RPG    # matches "RPG", ": RPG", and "the RPG".
-  - &optional-rpg ((\s*:)?(\s*the)?\s*RPG)? # as the-rpg, but optional.
+  - &the-rpg (\s*:)?(\s*the)?\s*RPG # matches "RPG", ": RPG", and "the RPG".
 
 Generic topic:
-  Tabletop RPG:
+  Tabletop RPGs:
     - TTRPGs?
     - Tabletop\s*RPGs?
-    - Tabletop\s*Gam(er?s?|ing)
+    - Tabletop\s*Gam(er?s?|ing)         # This might include board games?
     - Pen\s*(-?and-?|&)\s*Paper\s*RPGs?
     - Juegos\s*de\s*rol(\s*de\s*mesa)?
 
@@ -54,7 +53,7 @@ System:
     - [Blue\s*Planet, *the-rpg]
 
   Brindlewood Bay:
-    - [Brindlewood\s*Bay, *optional-rpg]
+    - Brindlewood\s*Bay
 
   Cairn:
     - Cairn(:?(\s*:)?(\s*the)\s*RPG|\s*2e)
@@ -67,7 +66,7 @@ System:
     - [Candela\s*Obscura, *the-rpg]
 
   Cepheus Engine:
-    - ['Cepheus\s*(Engine|Deluxe)', *optional-rpg]
+    - 'Cepheus\s*(Engine|Deluxe)'
     - [Cepheus, *the-rpg]
 
   Coyote & Crow:
@@ -88,10 +87,10 @@ System:
     - [Cyberpunk, *the-rpg]
 
   Daggerheart:
-    - [Daggerheart, *optional-rpg]
+    - Daggerheart
 
   Delta Green:
-    - [Delta\s*Green, *optional-rpg]
+    - Delta\s*Green
 
   Dungeons & Dragons:
     - Dungeons\s*(and|&)\s*Dragons
@@ -109,14 +108,14 @@ System:
     - Dungeon\s*World
 
   EZD6:
-    - [EZ\s*D6, *optional-rpg]
+    - EZ\s*D6
 
   Fantasy Age:
     - Fantasy\s*Age
 
   Five Torches Deep:
-    - ['(Five|5)\s*Torches\s*Deep', *optional-rpg]
-    - ['[F5]TD', *optional-rpg]
+    - '(Five|5)\s*Torches\s*Deep'
+    - '[F5]TD'
 
   Forbidden Lands:
     - Forbidden\s*Lands
@@ -126,7 +125,7 @@ System:
     - FitD
 
   Gamma World:
-    - [Gamma\s*World, *optional-rpg]
+    - Gamma\s*World
 
   Illuminated Worlds:
     - Illuminated\s*Worlds
@@ -136,15 +135,15 @@ System:
     - Knave\s*[12]e?
 
   Lamentations of the Flame Princess:
-    - [Lamentations\s*of\s*the\s*Flame\s*Princess, *optional-rpg]
-    - [LoftFP, *optional-rpg]
+    - Lamentations\s*of\s*the\s*Flame\s*Princess
+    - LoftFP
 
   Mothership:
-    - [Mothership, *optional-rpg]
+    - Mothership
 
   Neoclassical Geek Revival:
-    - [Neoclassical\s*Geek\s*Revival, *optional-rpg]
-    - [NGR, *optional-rpg]
+    - Neoclassical\s*Geek\s*Revival
+    - NGR
 
   Old School Essentials:
     - Old(-|\s*)School\s*Essentials
@@ -170,7 +169,7 @@ System:
     - [Root, *the-rpg]
 
   RuneQuest:
-    - [RuneQuest, *optional-rpg]
+    - RuneQuest
 
   Savage Worlds:
     - Savage\s*Worlds
@@ -183,8 +182,8 @@ System:
     - [Shadowrun, *the-rpg]
 
   Skyrealms of Jorune:
-    - [Sky\s*realms\s*of\s*Jorune, *optional-rpg]
-    - [Jorune, *optional-rpg]
+    - Sky\s*realms\s*of\s*Jorune
+    - Jorune
 
   Starfinder:
     - Starfinder
@@ -203,8 +202,8 @@ System:
     - [TftL, *the-rpg]
 
   Tales of the Valiant:
-    - ['Tales\s*of(\s*the)?\s*Valiant', *optional-rpg]
-    - [TotV, *optional-rpg]
+    - 'Tales\s*of(\s*the)?\s*Valiant'
+    - TotV
     - [ToV, *the-rpg]
 
   The Between:
@@ -214,8 +213,8 @@ System:
     - ['(The\s*)?Silt\s*Verses', *the-rpg]
 
   Thirsty Sword Lesbians:
-    - [Thirsty\s*Sword\s*Lesbians, *optional-rpg]
-    - [TSL, *optional-rpg]
+    - Thirsty\s*Sword\s*Lesbians
+    - TSL
 
   Traveller:
     - ['Travell?er', *the-rpg]
@@ -232,31 +231,31 @@ System:
     - Vamily
 
   Wanderhome:
-    - [Wanderhome, *optional-rpg]
+    - Wanderhome
 
   World of Dungeons:
     - World\s*of\s*Dungeons
 
   Zweihänder:
-    - ['Zweih[aä]nder', *optional-rpg]
+    - 'Zweih[aä]nder'
 
   Top Secret:
     - [Top\s*Secret, *the-rpg]
 
   Vast Grimm:
-    - [Vast\s*Grimm, *optional-rpg]
+    - Vast\s*Grimm
 
   Paranoia:
     - [Paranoia, *the-rpg]
 
   Star Frontiers:
-    - [Star\s*Frontiers, *optional-rpg]
+    - Star\s*Frontiers
 
   The Witcher:
     - [The\s*Witcher, *the-rpg]
 
   Troika!":
-    - ['Troika!?', *optional-rpg]
+    - 'Troika!?'
 
   Aquelarre:
     - Aquelarre
@@ -272,7 +271,7 @@ System:
     - Cultos\s*Innombrables
 
   World of Darkness:
-    - [World\s*of\s*Darkness, *optional-rpg]
+    - World\s*of\s*Darkness
     - WoD
     - Mundo\s*de\s*Tinieblas
     - MdT
@@ -281,5 +280,5 @@ System:
     - [Fish\s*Blade, *the-rpg]
 
   Monster of the Week:
-    - [Monster\s*of\s*the\s*Week, *optional-rpg]
-    - [MotW, *optional-rpg]
+    - Monster\s*of\s*the\s*Week
+    - MotW
