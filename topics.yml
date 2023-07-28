@@ -221,7 +221,8 @@ Traveller:
   - ['Travell?er', *the-rpg]
 
 Trophy:
-  - Trophy\s*(Dark|Gold|(:\s*)?(the\s*)?RPG)
+  - Trophy\s*(Dark|Gold)
+  - [Trophy, *the-rpg]
 
 Urban Shadows:
   - Urban\s*Shadows
