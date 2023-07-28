@@ -1,0 +1,24 @@
+name: Run RuboCop
+run-name: Running RuboCop
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - topics.yml
+      - spec/**/*
+
+jobs:
+  run-tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Setup Ruby 3.2
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version:  "3.2"
+          bundler-cache: true
+      - name: Install dependencies
+        run:  bundle install
+      - name: Run RuboCop
+        run:  bundle exec rubocop

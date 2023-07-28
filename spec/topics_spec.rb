@@ -3,7 +3,7 @@
 require "pathname"
 require "yaml"
 
-RSpec.describe "topics.yml" do
+RSpec.describe "topics.yml" do # rubocop:todo RSpec/DescribeClass
   subject(:topics_file) { Pathname("topics.yml") }
 
   it { is_expected.to be_exist }
@@ -15,7 +15,7 @@ RSpec.describe "topics.yml" do
   YAML.load_file(Pathname("topics.yml"), aliases: true).reject { |k, _| k.start_with?(".") }.each do |topic, patterns|
     patterns.map { |pattern| Array(pattern).join }.each do |pattern|
       describe "'#{pattern}' for #{topic.inspect}" do
-        it "is a valid regular expression" do |example|
+        it "is a valid regular expression" do
           expect(pattern).to be_a_valid_regular_expression
         end
       end

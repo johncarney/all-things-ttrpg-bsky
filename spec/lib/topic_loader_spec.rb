@@ -64,7 +64,7 @@ RSpec.describe TopicLoader do
 
     let(:topic_file) { fixture("example-topics.yml") }
 
-    it "loads the topics from the file" do
+    it "loads the topics from the file" do # rubocop:todo RSpec/ExampleLength
       expect(topics).to contain_exactly(
         a_topic.named("First topic").with_patterns("a pattern", "a pattern with a macro"),
         a_topic.named("Second topic").with_patterns("another pattern"),
