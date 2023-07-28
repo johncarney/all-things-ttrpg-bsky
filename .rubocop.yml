@@ -12,7 +12,8 @@
 require: rubocop-rspec
 
 AllCops:
-  NewCops: enable
+  NewCops:           enable
+  TargetRubyVersion: 3.2
 
 Layout/HashAlignment:
   EnforcedHashRocketStyle: table
