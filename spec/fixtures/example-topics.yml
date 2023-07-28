@@ -1,0 +1,13 @@
+.macros:
+  - &some-macro " a macro"
+
+First topic:
+  - a pattern
+  - [a pattern with, *some-macro]
+
+Second topic:
+  - another pattern
+
+Empty topic:
+
+Single-pattern topic: the pattern

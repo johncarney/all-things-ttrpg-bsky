@@ -12,6 +12,16 @@ RSpec.describe "topics.yml" do
     expect { YAML.load_file(topics_file, aliases: true) }.not_to raise_error
   end
 
+  YAML.load_file(Pathname("topics.yml"), aliases: true).reject { |k, _| k.start_with?(".") }.each do |topic, patterns|
+    patterns.map { |pattern| Array(pattern).join }.each do |pattern|
+      describe "'#{pattern}' for #{topic.inspect}" do
+        it "is a valid regular expression" do |example|
+          expect(pattern).to be_a_valid_regular_expression
+        end
+      end
+    end
+  end
+
   matcher :be_a_valid_regular_expression do
     match do |pattern|
       Regexp.new(pattern)
@@ -21,18 +31,8 @@ RSpec.describe "topics.yml" do
       false
     end
 
-    failure_message do |(category, topic, pattern)|
+    failure_message do
       "Got #{@exception.class}: #{@exception}"
-    end
-  end
-
-  YAML.load_file(Pathname("topics.yml"), aliases: true).reject { |k, _| k.start_with?(".") }.each do |topic, patterns|
-    patterns.map { |pattern| Array(pattern).join }.each do |pattern|
-      describe "'#{pattern}' for #{topic.inspect}" do
-        subject { pattern }
-
-        it { is_expected.to be_a_valid_regular_expression }
-      end
     end
   end
 end

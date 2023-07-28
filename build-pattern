@@ -5,6 +5,9 @@ require "optparse"
 require "pathname"
 require "yaml"
 
+require_relative "lib/topic"
+require_relative "lib/topic_loader"
+
 module BuildPattern
   OPTIONS = proc do |opts|
     opts.banner = <<~USAGE
@@ -40,10 +43,7 @@ module BuildPattern
     end
 
     def topics
-      @topics ||= begin
-        topics_hash = YAML.load_file(topic_file, aliases: true)
-        Topic.from_hash(topics_hash.reject { |k, _| k.start_with?(".") })
-      end
+      @topics ||= TopicLoader.from_file(topic_file)
     end
 
     def validate?
@@ -52,31 +52,6 @@ module BuildPattern
 
     def self.run(...)
       new(...).run
-    end
-  end
-
-  class Topic
-    attr_reader :name, :patterns
-
-    def initialize(name, patterns:)
-      @name = name
-      @patterns = patterns
-    end
-
-    def self.from_hash(topics)
-      topics.map do |name, patterns|
-        patterns = patterns.map { |pattern| Array(pattern).join }
-        new(name, patterns:)
-      end
-    end
-
-    def errors
-      patterns.map do |pattern|
-        Regexp.new(pattern)
-        nil
-      rescue RegexpError => e
-        "#{e.class}: #{e} for #{name.inspect}"
-      end.compact
     end
   end
 end
