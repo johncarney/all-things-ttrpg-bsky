@@ -12,7 +12,7 @@
 Tabletop RPGs:
   - TTRPGs?
   - Tabletop\s*RPGs?
-  - Tabletop\s*Gam(er?s?|ing)         # This might include board games?
+  - Tabletop\s*Gam(er?s?|ing)         # This might include unwanted non-RPGs?
   - Pen\s*(-?and-?|&)\s*Paper\s*RPGs?
   - Juegos\s*de\s*rol(\s*de\s*mesa)?
 
