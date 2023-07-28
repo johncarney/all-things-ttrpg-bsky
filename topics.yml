@@ -7,12 +7,16 @@
 .macros:
   - &the-rpg (\s*:)?(\s*the)?\s*RPG # matches "RPG", ": RPG", and "the RPG".
 
+# General topics
+
 Tabletop RPGs:
   - TTRPGs?
   - Tabletop\s*RPGs?
   - Tabletop\s*Gam(er?s?|ing)         # This might include board games?
   - Pen\s*(-?and-?|&)\s*Paper\s*RPGs?
   - Juegos\s*de\s*rol(\s*de\s*mesa)?
+
+# Shows
 
 Dimension 20:
   - Dimension\s*20
@@ -35,6 +39,8 @@ Children of Éarte:
 
 Relics & Rarities:
   - Relics\s*(&|and)\s*Rarities
+
+# Systems
 
 Apocalypse World:
   - Apocalypse\s*World
