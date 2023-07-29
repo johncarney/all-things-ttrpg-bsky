@@ -7,7 +7,7 @@ in Bluesky feeds. In particular, the patterns here are used in my
 ## Topic file
 
 This most interesting part of this is the [`topics.yml`] file. It contains a
-[YAML]-formatted list of [regular expressions] (aka patterns), matching
+[YAML]-formatted list of [regular expressions] (aka "patterns") matching
 TTRPG-related terms. These are grouped into "topics." So the listing for
 *[Neoclassical Geek Revival]* looks like this:
 
@@ -55,12 +55,12 @@ an array with the other parts of the pattern. For example:
 This will expand to `Travell?er(\s*:)?(\s*the)?\s*RPG`.
 
 The way macros work uses a little YAML trickery known as "anchors" and
-"aliases". I'm not going to explain that here either. The usages in `topics.yml`
-should be enough to get the idea.
+"aliases". I'm not going to explain that here either. The usages in
+[`topics.yml`] should be enough to get the idea.
 
 ### Capitalization
 
-You will notice that the patterns in `topics.yml` are capitalized, even though
+You will notice that the patterns in [`topics.yml`] are capitalized, even though
 I've said that all matches are case-insensitive. This is a stylistic choice. I
 want the capitalization in the pattern to reflect the "canonical" orthography
 for the term, which is usually [title case]. In the case of acronyms, I use
@@ -70,9 +70,9 @@ have `V:?tM` for *[Vampire: the Masquerade]* and `TotV` for
 
 ### Topic order
 
-There is no special significance to the order of the topics in `topics.yml`, but
-the `.macros` entry must come first. This is due to the way YAML works. Aside
-from that restriction the order of topics does not matter. The script that
+There is no special significance to the order of the topics in [`topics.yml`],
+but the `.macros` entry must come first. This is due to the way YAML works.
+Aside from that restriction the order of topics does not matter. The script that
 combines the topic patterns into the main feed pattern sorts the patterns by
 descending length, so longer patterns are matched first. So
 "[Candela Obscura RPG]" will be matched in preference to just
@@ -85,7 +85,7 @@ generator in which topics will be relevant.
 
 ## Using the script
 
-The `build-pattern` script combines the patterns in `topics.yml` into a single
+The `build-pattern` script combines the patterns in [`topics.yml`] into a single
 regular expression for use in feed generator such as [skyfeed.app].
 
 To use it you must have Ruby 3.2 or later installed. Then you can run the script
@@ -108,8 +108,8 @@ Then you can run the tests:
   rspec
   ```
 
-If you've modified `topics.yml`, you might only want to run the tests for that.
-You can do so with the following command:
+If you've modified [`topics.yml`], you might only want to run the tests for
+that. You can do so with the following command:
 
   ```bash
   rspec spec/topics_spec.rb
