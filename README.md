@@ -27,8 +27,9 @@ zero or more spaces followed by "Revival". Thus the pattern will match
 are case-insensitive, so it will also match "neoclassical geek revival" or even
 "nEocLaSSicalGEEKrEviVaL".
 
-Moreover, patterns only match on word boundaries. So the pattern `NGR` will
-*not* match on "INGRESS", but it will match "I'm off to play some NGR."
+Moreover, patterns only match on word boundaries[^1]. So the pattern `NGR` will
+*not* match on the text "*we searched for a point of i<u>ngr</u>ess.*",
+but it *will* match "*I'm off to play some <u>NGR</u>.*"
 
 Some patterns need to be enclosed in single quote marks because they contain
 characters that are special to [YAML]. The ones to watch our for are patterns
@@ -40,8 +41,8 @@ That's basically it. There is only one major wrinkle to this and that is the
 `.macros` entry at the top of the file. This is a list of regular expressions
 that can be used in other patterns. The only macro currently defined is
 "the-rpg". A lot of the terms are ambiguous. For example, *[Traveller]* is a
-TTRPG, but it's also a very common word. So in order to qualify as a match, my
-feed requires that the term be followed by "RPG". The "the-rpg" macro is a
+TTRPG, but it's also a very common word[^2]. So in order to qualify as a match,
+my feed requires that the term be followed by "RPG". The "the-rpg" macro is a
 shortcut for this. It also matches variations such as "TravellerRPG",
 "Traveller: RPG", or "Traveller the RPG". To use the macro you must place it in
 an array with the other parts of the pattern. For example:
@@ -126,12 +127,26 @@ And then I added tests...
 
 And then I added GitHub actions...
 
+<!-- Footnotes -->
+
+[^1]: A word boundary is a transition from a word character to a non-word
+      character or vice versa. A word character is any letter, digit, or
+      underscore. However, [skyfeed.app] seems to mistakenly consider at least
+      some accented characters to be non-word characters, so I've seen things
+      like "cocô" matching `CoC` (for *Call of Cthulhu*). This is rare enough
+      that it doesn't bother me, but it's something to be aware of.
+
+[^2]: When I first built my feed, I assumed that "Traveller" with two Ls would
+      be rare enough that I could safely use it without qualification. I was
+      wrong and ended up with a lot of false positives in the feed, so I added
+      the "RPG" qualifier.
+
 <!-- Links -->
 
 [All things TTRPG]:          https://bsky.app/profile/did:plc:wpldthix3tayaursdd2czdi7/feed/aaabrflewwwxc
 [skyfeed.app]:               https://skyfeed.app
-[regular-expressions.info]:  https://www.regular-expressions.info/
-[regular expressions]:       https://www.regular-expressions.info/
+[regular-expressions.info]:  https://www.regular-expressions.info
+[regular expressions]:       https://www.regular-expressions.info
 [YAML]:                      https://en.wikipedia.org/wiki/YAML
 [title case]:                https://en.wikipedia.org/wiki/Title_case
 [Neoclassical Geek Revival]: https://www.neoclassicalgames.com
@@ -140,5 +155,6 @@ And then I added GitHub actions...
 [Traveller]:                 https://www.mongoosepublishing.com/collections/traveller-rpgs
 [Vampire: the Masquerade]:   https://www.worldofdarkness.com/vampire-the-masquerade
 [Tales of the Valiant]:      https://www.talesofthevaliant.com
-[Candela Obscura RPG]:       https://darringtonpress.com/candela/
-[Candela Obscura]:           https://critrole.com/shows/candela-obscura/
+[Candela Obscura RPG]:       https://darringtonpress.com/candela
+[Candela Obscura]:           https://critrole.com/shows/candela-obscura
+[Call of Cthulhu]:           https://www.chaosium.com/call-of-cthulhu-rpg
