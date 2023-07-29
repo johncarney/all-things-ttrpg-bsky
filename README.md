@@ -1,14 +1,15 @@
 # All things TTRPG
 
-Library of regular expressions matching TTRPG-related terms for use in Bluesky
-feeds. In particular, the patterns here are used in my [All things TTRPG] feed
-generated from [skyfeed.app].
+This is a library of regular expressions matching TTRPG-related terms for use
+in Bluesky feeds. In particular, the patterns here are used in my
+[All things TTRPG] feed, which is generated using [skyfeed.app].
 
 ## Topic file
 
-The `topics.yml` file contains a [YAML]-formatted list of regular expressions
-matching TTRPG-related terms. These are grouped into "topics." So the listing
-for *Neoclassical Geek Revival* looks like this:
+This most interestin part of this is the `topics.yml` file. It contains a
+[YAML]-formatted list of [regular expressions] (aka patterns), matching
+TTRPG-related terms. These are grouped into "topics." So the listing for
+*[Neoclassical Geek Revival]* looks like this:
 
   ```yaml
   Neoclassical Geek Revival:
@@ -27,30 +28,30 @@ are case-insensitive, so it will also match "neoclassical geek revival" or even
 "nEocLaSSicalGEEKrEviVaL".
 
 Moreover, patterns only match on word boundaries. So the pattern `NGR` will
-*not* match on "INGRESS", but it will match "I am off to play some NGR."
+*not* match on "INGRESS", but it will match "I'm off to play some NGR."
 
 Some patterns need to be enclosed in single quote marks because they contain
 characters that are special to [YAML]. The ones to watch our for are patterns
 containing `#` and patterns starting with `[`. Such patterns must be enclosed in
-single quotes. For example: `[F5]TD` (for *Five Torches Deep*) or `#PF` (for
-*Pathfinder*).
+single quotes. For example: `[F5]TD` (for *[Five Torches Deep]*) and `#PF` (for
+*[Pathfinder]*).
 
 That's basically it. There is only one major wrinkle to this and that is the
 `.macros` entry at the top of the file. This is a list of regular expressions
 that can be used in other patterns. The only macro currently defined is
-"the-rpg". A lot of the terms are ambiguous. For example, *Shadowrun* is a
-TTRPG, but it's also a video game. So in order to qualify as a match, my feed
-requires that the term be followed by "RPG". The "the-rpg" macro is a shortcut
-for this. It also matches variations such as "ShadowrunRPG", "Shadowrun: RPG",
-or "Shadowrun the RPG". To use the macro you must place it in an array with the
-other parts of the pattern. For example:
+"the-rpg". A lot of the terms are ambiguous. For example, *[Traveller]* is a
+TTRPG, but it's also a very common word. So in order to qualify as a match, my
+feed requires that the term be followed by "RPG". The "the-rpg" macro is a
+shortcut for this. It also matches variations such as "TravellerRPG",
+"Traveller: RPG", or "Traveller the RPG". To use the macro you must place it in
+an array with the other parts of the pattern. For example:
 
   ```yaml
-  Shadowrun:
-  - [Shadowrun, *the-rpg]
+  Traveller:
+  - ['Travell?er', *the-rpg]
   ```
 
-This will expand to `Shadowrun(\s*:)?(\s*the)?\s*RPG`.
+This will expand to `Travell?er(\s*:)?(\s*the)?\s*RPG`.
 
 The way macros work uses a little YAML trickery known as "anchors" and
 "aliases". I'm not going to explain that here either. The usages in `topics.yml`
@@ -63,8 +64,8 @@ I've said that all matches are case-insensitive. This is a stylistic choice. I
 want the capitalization in the pattern to reflect the "canonical" orthography
 for the term, which is usually [title case]. In the case of acronyms, I use
 what I think is the common usage. Again, this usually follows title case, so we
-have `V:?tM` for *Vampire: the Masquerade* and `TotV` for
-*Tales of the Valiant*.
+have `V:?tM` for *[Vampire: the Masquerade]* and `TotV` for
+*[Tales of the Valiant]*.
 
 ### Topic order
 
@@ -73,7 +74,8 @@ the `.macros` entry must come first. This is due to the way YAML works. Aside
 from that restriction the order of topics does not matter. The script that
 combines the topic patterns into the main feed pattern sorts the patterns by
 descending length, so longer patterns are matched first. So
-"Candela Obscura RPG" will be matched in preference to just "Candela Obscura".
+"[Candela Obscura RPG]" will be matched in preference to just
+"[Candela Obscura]", which on its own is most often a reference to the show.
 
 This is not really important for use in something like [skyfeed.app] because we
 don't really care about with topics are matched. Topics are just a way to
@@ -126,8 +128,17 @@ And then I added GitHub actions...
 
 <!-- Links -->
 
-[All things TTRPG]:         https://bsky.app/profile/did:plc:wpldthix3tayaursdd2czdi7/feed/aaabrflewwwxc
-[skyfeed.app]:              https://skyfeed.app
-[regular-expressions.info]: https://www.regular-expressions.info/
-[YAML]:                     https://en.wikipedia.org/wiki/YAML
-[title case]:               https://en.wikipedia.org/wiki/Title_case
+[All things TTRPG]:          https://bsky.app/profile/did:plc:wpldthix3tayaursdd2czdi7/feed/aaabrflewwwxc
+[skyfeed.app]:               https://skyfeed.app
+[regular-expressions.info]:  https://www.regular-expressions.info/
+[regular expressions]:       https://www.regular-expressions.info/
+[YAML]:                      https://en.wikipedia.org/wiki/YAML
+[title case]:                https://en.wikipedia.org/wiki/Title_case
+[Neoclassical Geek Revival]: https://www.neoclassicalgames.com
+[Five Torches Deep]:         https://www.fivetorchesdeep.com
+[Pathfinder]:                https://paizo.com/pathfinder
+[Traveller]:                 https://www.mongoosepublishing.com/collections/traveller-rpgs
+[Vampire: the Masquerade]:   https://www.worldofdarkness.com/vampire-the-masquerade
+[Tales of the Valiant]:      https://www.talesofthevaliant.com
+[Candela Obscura RPG]:       https://darringtonpress.com/candela/
+[Candela Obscura]:           https://critrole.com/shows/candela-obscura/
