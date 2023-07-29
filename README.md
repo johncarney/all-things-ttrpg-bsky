@@ -133,7 +133,7 @@ And then I added GitHub actions...
       character or vice versa. A word character is any letter, digit, or
       underscore. However, [skyfeed.app] seems to mistakenly consider at least
       some accented characters to be non-word characters, so I've seen things
-      like "cocô" matching `CoC` (for *Call of Cthulhu*). This is rare enough
+      like "cocô" matching `CoC` (for *[Call of Cthulhu]*). This is rare enough
       that it doesn't bother me, but it's something to be aware of.
 
 [^2]: When I first built my feed, I assumed that "Traveller" with two Ls would
