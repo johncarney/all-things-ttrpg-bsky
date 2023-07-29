@@ -6,7 +6,7 @@ in Bluesky feeds. In particular, the patterns here are used in my
 
 ## Topic file
 
-This most interesting part of this is the `topics.yml` file. It contains a
+This most interesting part of this is the [`topics.yml`] file. It contains a
 [YAML]-formatted list of [regular expressions] (aka patterns), matching
 TTRPG-related terms. These are grouped into "topics." So the listing for
 *[Neoclassical Geek Revival]* looks like this:
@@ -158,3 +158,4 @@ And then I added GitHub actions...
 [Candela Obscura RPG]:       https://darringtonpress.com/candela
 [Candela Obscura]:           https://critrole.com/shows/candela-obscura
 [Call of Cthulhu]:           https://www.chaosium.com/call-of-cthulhu-rpg
+[`topics.yml`]:              topics.yml
