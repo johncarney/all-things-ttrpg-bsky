@@ -17,13 +17,17 @@ for *Neoclassical Geek Revival* looks like this:
   ```
 
 I'm not going to explain regular expressions here. If you don't know what they
-are, there are plenty of resources on the web. The wikipedia page covers the
-[basic concepts]. Suffice to say that the pattern
-`Neoclassical\s*Geek\s*Revival` matches "Neoclassical" followed by zero or more
-spaces followed by "Geek" followed by zero or more spaces followed by "Revival".
-Thus the pattern will match "Neoclassical Geek Revival",
-"NeoclassicalGeekRevival", and so on. All matches are case-insensitive, so it
-will also match "neoclassical geek revival" or even "nEocLaSSicalGEEKrEviVaL".
+are, there are plenty of resources on the web. The site
+[regular-expressions.info] is a good starting point. There are many others.
+Suffice to say that the pattern `Neoclassical\s*Geek\s*Revival` matches
+"Neoclassical" followed by zero or more spaces followed by "Geek" followed by
+zero or more spaces followed by "Revival". Thus the pattern will match
+"Neoclassical Geek Revival", "NeoclassicalGeekRevival", and so on. All matches
+are case-insensitive, so it will also match "neoclassical geek revival" or even
+"nEocLaSSicalGEEKrEviVaL".
+
+Moreover, patterns only match on word boundaries. So the pattern `NGR` will
+*not* match on "INGRESS", but it will match "I am off to play some NGR."
 
 Some patterns need to be enclosed in single quote marks because they contain
 characters that are special to [YAML]. The ones to watch our for are patterns
@@ -51,6 +55,30 @@ This will expand to `Shadowrun(\s*:)?(\s*the)?\s*RPG`.
 The way macros work uses a little YAML trickery known as "anchors" and
 "aliases". I'm not going to explain that here either. The usages in `topics.yml`
 should be enough to get the idea.
+
+### Capitalization
+
+You will notice that the patterns in `topics.yml` are capitalized, even though
+I've said that all matches are case-insensitive. This is a stylistic choice. I
+want the capitalization in the pattern to reflect the "canonical" orthography
+for the term, which is usually [title case]. In the case of acronyms, I use
+what I think is the common usage. Again, this usually follows title case, so we
+have `V:?tM` for *Vampire: the Masquerade* and `TotV` for
+*Tales of the Valiant*.
+
+### Topic order
+
+There is no special significance to the order of the topics in `topics.yml`, but
+the `.macros` entry must come first. This is due to the way YAML works. Aside
+from that restriction the order of topics does not matter. The script that
+combines the topic patterns into the main feed pattern sorts the patterns by
+descending length, so longer patterns are matched first. So
+"Candela Obscura RPG" will be matched in preference to just "Candela Obscura".
+
+This is not really important for use in something like [skyfeed.app] because we
+don't really care about with topics are matched. Topics are just a way to
+organize the topics file. However, I am working on a more sophisticated feed
+generator in which topics will be relevant.
 
 ## Using the script
 
@@ -98,7 +126,8 @@ And then I added GitHub actions...
 
 <!-- Links -->
 
-[All things TTRPG]: https://bsky.app/profile/did:plc:wpldthix3tayaursdd2czdi7/feed/aaabrflewwwxc
-[skyfeed.app]:      https://skyfeed.app
-[basic concepts]:   https://en.wikipedia.org/wiki/Regular_expression#Basic_concepts
-[YAML]:             https://en.wikipedia.org/wiki/YAML
+[All things TTRPG]:         https://bsky.app/profile/did:plc:wpldthix3tayaursdd2czdi7/feed/aaabrflewwwxc
+[skyfeed.app]:              https://skyfeed.app
+[regular-expressions.info]: https://www.regular-expressions.info/
+[YAML]:                     https://en.wikipedia.org/wiki/YAML
+[title case]:               https://en.wikipedia.org/wiki/Title_case
