@@ -28,8 +28,8 @@ are case-insensitive, so it will also match "neoclassical geek revival" or even
 "nEocLaSSicalGEEKrEviVaL".
 
 Moreover, patterns only match on word boundaries[^1]. So the pattern `NGR` will
-*not* match on the text "*we searched for a point of i<u>ngr</u>ess.*",
-but it *will* match "*I'm off to play some <u>NGR</u>.*"
+*not* match on the text "*we searched for a point of i**ngr**ess.*",
+but it *will* match "*I'm off to play some **NGR**.*"
 
 Some patterns need to be enclosed in single quote marks because they contain
 characters that are special to [YAML]. The ones to watch our for are patterns
