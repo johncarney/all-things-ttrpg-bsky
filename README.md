@@ -79,8 +79,8 @@ descending length, so longer patterns are matched first. So
 "[Candela Obscura]", which on its own is most often a reference to the show.
 
 This is not really important for use in something like [skyfeed.app] because we
-don't really care about with topics are matched. Topics are just a way to
-organize the topics file. However, I am working on a more sophisticated feed
+don't really care about which topics are matched. Topics are just a way to
+organize the pattern library. However, I am working on a more sophisticated feed
 generator in which topics will be relevant.
 
 ## Using the script
