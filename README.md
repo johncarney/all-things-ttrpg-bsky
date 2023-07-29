@@ -6,7 +6,7 @@ in Bluesky feeds. In particular, the patterns here are used in my
 
 ## Topic file
 
-This most interestin part of this is the `topics.yml` file. It contains a
+This most interesting part of this is the `topics.yml` file. It contains a
 [YAML]-formatted list of [regular expressions] (aka patterns), matching
 TTRPG-related terms. These are grouped into "topics." So the listing for
 *[Neoclassical Geek Revival]* looks like this:
