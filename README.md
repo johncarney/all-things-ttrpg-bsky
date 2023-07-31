@@ -115,6 +115,49 @@ that. You can do so with the following command:
   rspec spec/topics_spec.rb
   ```
 
+### Restricting the feed pattern to a subset of topics
+
+Use the `--only` option to restrict the feed pattern to a subset of topics. For
+example, to *Blades in the Dark* and *Forged in the Dark*, use the following
+command.
+
+  ```bash
+  ./build-pattern topics.yml --only "Blades in the Dark, Forged in the Dark"
+  ```
+
+The `--only` option takes a comma-separated list of topic names. If the list
+contains spaces, you must enclose it in quotes. Instead of topic names, you can
+use strings that match any of the terms in a topic. For example, the following
+is equivalent to the above.
+
+  ```bash
+  ./build-pattern topics.yml --only BitD,FitD
+  ```
+
+Note that there are no spaces in the string, so the quotes aren't necessary.
+
+### Excluding topics from the feed pattern
+
+Use the `--except` option to exclude topics from the feed pattern. For example,
+the following command will exclude `Dungeons & Dragons` and `Pathfinder` from
+the feed pattern.
+
+  ```bash
+  ./build-pattern topics.yml --except "Dungeons & Dragons, Pathfinder"
+  ```
+
+As with the `--only` option, the `--except` option takes a comma-separated list.
+If the list includes spaces, it must be enclosed in quotes. You can also use any
+string that matches any of the term patterns in the topic. The following is
+equivalent to the example above.
+
+  ```bash
+  ./build-pattern topics.yml --except "D&D,PF"
+  ```
+
+In this case we had to enclose the list in quotes because `&` is a special
+character in the command line.
+
 ## History
 
 This started out as a simple text of the regular expressions making up the feed,
