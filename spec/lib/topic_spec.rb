@@ -5,6 +5,35 @@ require "topic"
 require "faker"
 
 RSpec.describe Topic do
+  describe "#match?" do
+    subject(:match?) { topic.match?(string) }
+
+    let(:topic) do
+      described_class.new(
+        Faker::Lorem.word.upcase,
+        patterns: %w[a\s*pattern another\s*pattern]
+      )
+    end
+
+    context "given a string matching the topic name" do # rubocop:todo RSpec/ContextWording
+      let(:string) { topic.name.downcase }
+
+      it { is_expected.to be_truthy }
+    end
+
+    context "given a string matching one of its patterns" do # rubocop:todo RSpec/ContextWording
+      let(:string) { ["A   Pattern", "aNother\tpAttErn"].sample }
+
+      it { is_expected.to be_truthy }
+    end
+
+    context "given a string that does not match the topic name or any of its patterns" do # rubocop:todo RSpec/ContextWording
+      let(:string) { "not a match" }
+
+      it { is_expected.to be_falsey }
+    end
+  end
+
   describe "#errors" do
     subject(:errors) { topic.errors }
 

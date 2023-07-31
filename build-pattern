@@ -14,6 +14,9 @@ module BuildPattern
       Usage: build-pattern TOPICFILE [OPTIONS]
     USAGE
 
+    opts.on "--only TOPICS",   "-t", Array, "Only include these topics"
+    opts.on "--except TOPICS", "-x", Array, "Exclude topics"
+
     opts.on "--help", -"h", "Prints this help" do
       puts opts
       exit
@@ -21,15 +24,18 @@ module BuildPattern
   end
 
   class App
-    attr_reader :topic_file
+    attr_reader :topic_file, :only, :except
 
-    def initialize(topic_file, validate: false)
+    def initialize(topic_file, validate: false, only: [], except: [])
       @topic_file = Pathname(topic_file)
       @validate = validate
+      @only = only
+      @except = except
     end
 
     def run
-      errors = topics.flat_map(&:errors)
+      puts except
+      errors = all_topics.flat_map(&:errors)
       if errors.any?
         warn errors
         exit(1)
@@ -43,7 +49,32 @@ module BuildPattern
     end
 
     def topics
-      @topics ||= TopicLoader.from_file(topic_file)
+      @topics ||= begin
+        base = only.any? ? only_topics : all_topics
+        base - except_topics
+      end
+    end
+
+    def only_topics
+      @only_topics ||= only.map do |exception|
+        topic = all_topics.find { |t| t.match?(exception) }
+        raise "No topic matches? #{exception.inspect}" unless topic
+
+        topic
+      end
+    end
+
+    def except_topics
+      @except_topics ||= except.map do |exception|
+        topic = all_topics.find { |t| t.match?(exception) }
+        raise "No topic matches? #{exception.inspect}" unless topic
+
+        topic
+      end
+    end
+
+    def all_topics
+      @all_topics ||= TopicLoader.from_file(topic_file)
     end
 
     def validate?
