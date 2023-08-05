@@ -66,7 +66,8 @@ Cairn:
 
 Call of Cthulhu:
 - Call\s*of\s*Cthulhu
-- Cof?C
+- CofC
+- [CoC, *the-rpg]
 
 Candela Obscura RPG:
 - [Candela\s*Obscura, *the-rpg]
@@ -280,7 +281,7 @@ Cultos Innombrables:
 
 World of Darkness:
 - World\s*of\s*Darkness
-- WoD
+- [WoD, *the-rpg]
 - Mundo\s*de\s*Tinieblas
 - MdT
 
