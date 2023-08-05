@@ -308,8 +308,8 @@ Tales of the Burned Stones:
 - TotBS
 
 Basic Fantasy Role-Playing Game:
-- Basic\s*Fantasy\s*Role(-|\s*)Playing\s*Game
-- Basic\s*Fantasy\s*RPG
+- (The\s*)?Basic\s*Fantasy\s*Role(-|\s*)Playing\s*Game
+- (The\s*)?Basic\s*Fantasy\s*RPG
 - BFRPG
 
 Breathless:
@@ -319,3 +319,8 @@ Breathless:
 City of Mist:
 - City\s*of\s*Mist
 
+Palladium Fantasy Role-Playing Game:
+- Palladium
+- Palladium\s*Fantasy
+- (The\s*)?Palladium(\s*Fantasy)?(RPG|\s*Role-?Playing(\s*Game)?)
+- PF?RPG
