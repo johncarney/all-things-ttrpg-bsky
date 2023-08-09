@@ -5,7 +5,7 @@
 # by a '*'. Example: [Shadowrun, *the-rpg]. This will expand to
 # 'Shadowrun(\s*:)?(\s*the)?\s*RPG'
 .macros:
-- &the-rpg (\s*:)?(\s*the)?\s*RPG # matches "RPG", ": RPG", "the RPG", and ": the RPG".
+- &the-rpg (\s*:)?(\s*the)?\s*(TT)?RPG # matches "RPG", ": RPG", "the RPG", and ": the RPG".
 
 # General topics
 
