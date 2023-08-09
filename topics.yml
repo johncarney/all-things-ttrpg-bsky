@@ -328,3 +328,9 @@ New School Revolution:
 - New\s*School\s*Revolution
 - [NSR, *the-rpg]
 - NSR
+
+Post-Old School Renaissance:
+- Post(-|\s*)Old\s*School\s*(Renaissance|Revolution)
+- Post-OSR
+- [POSR, *the-rpg]
+- POSR
