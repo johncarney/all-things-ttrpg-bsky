@@ -323,3 +323,8 @@ Palladium Fantasy Role-Playing Game:
 - Palladium\s*Fantasy
 - (The\s*)?Palladium(\s*Fantasy)?(RPG|\s*Role-?Playing(\s*Game)?)
 - PF?RPG
+
+New School Revolution:
+- New\s*School\s*Revolution
+- [NSR, *the-rpg]
+- NSR
