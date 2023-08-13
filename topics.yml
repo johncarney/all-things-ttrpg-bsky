@@ -344,3 +344,7 @@ Mausrítter:
 
 DUKK BÖRG:
 - DUKK\s*B[ÖO]RG
+
+Monsterhearts:
+- Monster\s*hearts?(\s*\d+)
+
