@@ -120,6 +120,9 @@ EZD6:
 Fantasy Age:
 - Fantasy\s*Age
 
+Dragonbane:
+- Dragon\s*bane
+
 Five Torches Deep:
 - (Five|5)\s*Torches\s*Deep
 - '[F5]TD'
