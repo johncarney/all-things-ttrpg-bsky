@@ -266,7 +266,8 @@ The Witcher:
 - [The\s*Witcher, *the-rpg]
 
 Troika!:
-- Troika!?
+- Troika!
+- [Troika, *the-rpg]
 
 Aquelarre:
 - Aquelarre
@@ -329,7 +330,6 @@ Palladium Fantasy Role-Playing Game:
 
 New School Revolution:
 - New\s*School\s*Revolution
-- [NSR, *the-rpg]
 - NSR
 
 Post-Old School Renaissance:
@@ -367,7 +367,6 @@ Star Trek the Role Playing Game:
 - Star\s*Trek(\s*:)?(\s*the)?\s*Role(-|\s*)Playing\s*Game
 
 Gubat Banwar:
-- [Gubat\s*Banwar, *the-rpg]
 - Gubat\s*Banwar
 
 Perils & Princesses:
@@ -378,7 +377,7 @@ Alice is Missing:
 - Alice\s*is\s*Missing
 
 Draw Steel:
-- [Draw\s*Steel, *the-rpg]
+- Draw\s*Steel
 - MCDM\s*RPG
 
 Apocalypse Keys:
@@ -394,3 +393,9 @@ Sword and Sorcery:
 The Dresden Files Roleplaying Game:
 - (The\s*)?Dresden\s*Files\s*Roleplaying\s*Game
 - (The\s*)?Dresden\s*Files\s*(:\s*)?(The\s*)?RPG
+
+Beetle Knight:
+- Beetle\s*Knight
+
+Vaesen:
+- Vaesen
