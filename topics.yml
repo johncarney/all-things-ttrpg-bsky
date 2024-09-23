@@ -399,3 +399,8 @@ Beetle Knight:
 
 Vaesen:
 - Vaesen
+
+Tales of Forge & Fortune:
+- Tales\s*of\s*Forge\s*(&|and)\s*Fortune
+- Forge\s*(&|and)\s*Fortune
+- ToF(&|n)?F
