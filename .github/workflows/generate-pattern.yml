@@ -1,5 +1,5 @@
-name: Generate regular expression
-run-name: Generating the regular expression
+name: Generate regular expressions
+run-name: Generating the regular expressions
 
 on:
   workflow_run:
@@ -20,6 +20,11 @@ jobs:
       - name: Install dependencies
         run:  bundle install
       - name: Generate regular expression
-        run: ./build-pattern topics.yml categories.yml --except Publishers
+        run: ./build-pattern topics.yml categories.yml --except Publishers > regexes/all-things-ttrpg.txt
       - name: Generate non-WotC/Pathfinder expression
-        run: ./build-pattern topics.yml categories.yml --only "Wizards of the Coast, Dungeons & Dragons, Pathfinder"
+        run: ./build-pattern topics.yml categories.yml --only "Wizards of the Coast, Dungeons & Dragons, Pathfinder" > regexes/non-wotc-pathfinder.txt
+      - name: Archive regular expressions
+        uses: actions/upload-artifact@v4
+        with:
+          name: regexes
+          path: regexes
