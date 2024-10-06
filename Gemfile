@@ -2,6 +2,7 @@
 
 source "https://rubygems.org"
 
+gem "awesome_print"
 gem "faker"
 gem "rspec"
 gem "rspec-file_fixtures"

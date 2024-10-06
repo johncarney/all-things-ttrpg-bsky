@@ -8,7 +8,7 @@ class Topic
     @patterns = patterns
   end
 
-  def match?(string)
+  def matches?(string)
     string.casecmp?(name) ||
       patterns.any? { |pattern| string =~ /\A#{pattern}\z/i }
   end

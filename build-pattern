@@ -1,12 +1,15 @@
 #!/usr/bin/env ruby
 # frozen_string_literal: true
 
+require "awesome_print"
 require "optparse"
 require "pathname"
 require "yaml"
 
 require_relative "lib/topic"
 require_relative "lib/topic_loader"
+require_relative "lib/category"
+require_relative "lib/category_loader"
 
 module BuildPattern
   OPTIONS = proc do |opts|
@@ -14,12 +17,12 @@ module BuildPattern
       Usage: build-pattern TOPICFILE [OPTIONS]
     USAGE
 
-    opts.on "--only TOPICS", "-t", Array, "Only include these topics" do |topics|
-      topics.map(&:strip)
+    opts.on "--only CATEGORIES", "-c", Array, "Only include these topic categories" do |categories|
+      categories.map(&:strip)
     end
 
-    opts.on "--except TOPICS", "-x", Array, "Exclude topics" do |topics|
-      topics.map(&:strip)
+    opts.on "--except CATEGORIES", "-x", Array, "Exclude topic categories" do |categories|
+      categories.map(&:strip)
     end
 
     opts.on "--help", -"h", "Prints this help" do
@@ -29,17 +32,17 @@ module BuildPattern
   end
 
   class App
-    attr_reader :topic_file, :only, :except
+    attr_reader :topic_file, :category_file, :only, :except
 
-    def initialize(topic_file, validate: false, only: [], except: [])
+    def initialize(topic_file, category_file, validate: false, only: [], except: [])
       @topic_file = Pathname(topic_file)
+      @category_file = Pathname(category_file)
       @validate = validate
       @only = only
       @except = except
     end
 
     def run
-      puts except
       errors = all_topics.flat_map(&:errors)
       if errors.any?
         warn errors
@@ -61,20 +64,20 @@ module BuildPattern
     end
 
     def only_topics
-      @only_topics ||= only.map do |exception|
-        topic = all_topics.find { |t| t.match?(exception) }
-        raise "No topic matches? #{exception.inspect}" unless topic
+      @only_topics ||= only.flat_map do |inclusion|
+        include_topics = topics_matching(inclusion)
+        raise "No category or topic matches #{inclusion.inspect}" if include_topics.empty?
 
-        topic
+        include_topics
       end
     end
 
     def except_topics
-      @except_topics ||= except.map do |exception|
-        topic = all_topics.find { |t| t.match?(exception) }
-        raise "No topic matches? #{exception.inspect}" unless topic
+      @except_topics ||= except.flat_map do |exception|
+        exclude_topics = topics_matching(inclusion)
+        raise "No category or topic matches #{exception.inspect}" if exclude_topics.empty?
 
-        topic
+        exclude_topics
       end
     end
 
@@ -82,13 +85,26 @@ module BuildPattern
       @all_topics ||= TopicLoader.from_file(topic_file)
     end
 
+    def categories
+      @categories ||= CategoryLoader.from_file(category_file) do |*topic_names|
+        topic_names.flat_map do |topic_name|
+          all_topics.select { |topic| topic.matches?(topic_name) }
+        end
+      end
+    end
+
+    def topics_matching(category_or_topic_name)
+      matching_topics = categories.select { |category| category.matches?(category_or_topic_name) }.flat_map(&:topics)
+      return matching_topics if matching_topics.any?
+
+      all_topics.select { |topic| topic.matches?(category_or_topic_name) }
+    end
+
     def validate?
       @validate
     end
 
-    def self.run(...)
-      new(...).run
-    end
+    def self.run(...) = new(...).run
   end
 end
 

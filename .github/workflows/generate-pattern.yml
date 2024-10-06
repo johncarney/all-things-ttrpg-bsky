@@ -20,4 +20,6 @@ jobs:
       - name: Install dependencies
         run:  bundle install
       - name: Generate regular expression
-        run: ./build-pattern topics.yml
+        run: ./build-pattern topics.yml categories.yml --except Publishers
+      - name: Generate non-WotC/Pathfinder expression
+        run: ./build-pattern topics.yml categories.yml --only "Wizards of the Coast, Dungeons & Dragons, Pathfinder"
