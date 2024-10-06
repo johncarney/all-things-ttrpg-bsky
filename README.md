@@ -88,7 +88,7 @@ generator in which topics will be relevant.
 The `build-pattern` script combines the patterns in [`topics.yml`] into a single
 regular expression for use in feed generator such as [skyfeed.app].
 
-To use it you must have Ruby 3.2 or later installed. Then you can run the script
+To use it you must have Ruby 3.3 or later installed. Then you can run the script
 with the following command:
 
   ```bash
