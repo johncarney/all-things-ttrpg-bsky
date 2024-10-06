@@ -5,8 +5,8 @@ require "topic"
 require "faker"
 
 RSpec.describe Topic do
-  describe "#match?" do
-    subject(:match?) { topic.match?(string) }
+  describe "#matches?" do
+    subject(:matches?) { topic.matches?(string) }
 
     let(:topic) do
       described_class.new(

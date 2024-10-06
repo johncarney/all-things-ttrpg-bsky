@@ -11,8 +11,8 @@ class CategoryLoader
     end
   end
 
-  def self.from_file(category_file, &topic_resolver)
+  def self.from_file(category_file, &)
     hash = YAML.safe_load(Pathname(category_file).read, aliases: true)
-    from_hash(hash, &topic_resolver)
+    from_hash(hash, &)
   end
 end
