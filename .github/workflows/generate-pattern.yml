@@ -22,7 +22,7 @@ jobs:
       - name: Generate regular expression
         run: ./build-pattern topics.yml categories.yml --except Publishers > regexes/all-things-ttrpg.txt
       - name: Generate non-WotC/Pathfinder expression
-        run: ./build-pattern topics.yml categories.yml --only "Wizards of the Coast, Dungeons & Dragons, Pathfinder" > regexes/non-wotc-pathfinder.txt
+        run: ./build-pattern topics.yml categories.yml --only "Wizards of the Coast, Dungeons & Dragons, Pathfinder" > regexes/wotc-pathfinder.txt
       - name: Archive regular expressions
         uses: actions/upload-artifact@v4
         with:
