@@ -74,7 +74,7 @@ module BuildPattern
 
     def except_topics
       @except_topics ||= except.flat_map do |exception|
-        exclude_topics = topics_matching(inclusion)
+        exclude_topics = topics_matching(exception)
         raise "No category or topic matches #{exception.inspect}" if exclude_topics.empty?
 
         exclude_topics
