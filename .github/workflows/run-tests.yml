@@ -4,9 +4,6 @@ run-name: Running tests
 on:
   push:
     branches: [main]
-    paths:
-      - topics.yml
-      - spec/**/*
 
 jobs:
   run-tests:
