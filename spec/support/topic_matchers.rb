@@ -5,21 +5,19 @@ module TopicMatchers
 
   matcher :a_topic do
     match do |actual|
-      actual.is_a?(Topic) &&
-        matches_name?(actual) &&
-        matches_patterns?(actual)
+      actual.is_a?(Topic) && matches_name? && matches_patterns?
     end
 
-    def matches_name?(actual)
+    def matches_name?
       return true unless defined?(@topic_name)
 
-      actual.name == @topic_name
+      match(@topic_name).matches? actual.name
     end
 
-    def matches_patterns?(actual)
+    def matches_patterns?
       return true unless defined?(@patterns)
 
-      actual.patterns.sort == @patterns.sort
+      match_array(@patterns).matches? actual.patterns
     end
 
     chain :named do |topic_name|

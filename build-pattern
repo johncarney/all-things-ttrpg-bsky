@@ -85,10 +85,8 @@ module BuildPattern
     end
 
     def categories
-      @categories ||= CategoryLoader.from_file(category_file) do |*topic_names|
-        topic_names.flat_map do |topic_name|
-          all_topics.select { |topic| topic.matches?(topic_name) }
-        end
+      @categories ||= CategoryLoader.from_file(category_file) do |topic_name|
+        all_topics.select { |topic| topic.matches?(topic_name) }
       end
     end
 
