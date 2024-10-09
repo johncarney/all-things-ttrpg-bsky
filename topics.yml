@@ -405,10 +405,6 @@ Sword and Sorcery:
 - [Sword\s*(and|&)\s*Sorcery, *the-rpg]
 - Sword\s*(and|&)\s*Sorcery
 
-The Dresden Files Roleplaying Game:
-- [(The\s*)?Dresden\s*Files, *the-rpg]
-- [(The\s*)?Dresden\s*Files, *roleplaying-game]
-
 Beetle Knight:
 - Beetle\s*Knight
 
@@ -439,13 +435,17 @@ Year Zero Engine:
 - Year\s*Zero\s*Engine
 - YZE
 
+Into the Odd:
+- Into\s*the\s*Odd
+
 ALIEN The Roleplaying Game:
-- [ALIENS?, *the-rpg]
-- [ALIENS?, *roleplaying-game]
+- ['ALIENS?', *the-rpg]
+- ['ALIENS?', *roleplaying-game]
 
 Blade Runner The Roleplaying Game:
 - [Blade\s*Runner, *the-rpg]
 - [Blade\s*Runner, *roleplaying-game]
 
-Into the Odd:
-- Into\s*the\s*Odd
+The Dresden Files Roleplaying Game:
+- ['(The\s*)?Dresden\s*Files', *the-rpg]
+- ['(The\s*)?Dresden\s*Files', *roleplaying-game]
