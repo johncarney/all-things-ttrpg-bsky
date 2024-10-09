@@ -5,7 +5,8 @@
 # by a '*'. Example: [Shadowrun, *the-rpg]. This will expand to
 # 'Shadowrun(\s*:)?(\s*the)?\s*RPG'
 .macros:
-- &the-rpg (\s*:)?(\s*the)?\s*(TT)?RPG # matches "RPG", ": RPG", "the RPG", and ": the RPG".
+- &the-rpg          (\s*:)?(\s*the)?\s*((TT)?RPG|)                   # matches "RPG", ": RPG", "the RPG", and ": the RPG".
+- &roleplaying-game (\s*:)?(\s*the)?\s*Role(-|\s*)?Playing(\s*Game)? # matches "Role-Playing Game", ": Roleplaying Game", "the Role-Playing Game", and ": the Role Playing Game".
 
 # General topics
 
@@ -228,7 +229,7 @@ Tales from the Loop:
 Tales of the Valiant:
 - Tales\s*of(\s*the)?\s*Valiant
 - TotV
-- [ToV, *the-rpg]
+- [TotV, *the-rpg]
 
 The Between:
 - The\s*Between
@@ -405,14 +406,15 @@ Sword and Sorcery:
 - Sword\s*(and|&)\s*Sorcery
 
 The Dresden Files Roleplaying Game:
-- (The\s*)?Dresden\s*Files\s*Roleplaying\s*Game
-- (The\s*)?Dresden\s*Files\s*(:\s*)?(The\s*)?RPG
+- [(The\s*)?Dresden\s*Files, *the-rpg]
+- [(The\s*)?Dresden\s*Files, *roleplaying-game]
 
 Beetle Knight:
 - Beetle\s*Knight
 
-Vaesen:
-- Vaesen
+Vaesen - Nordic Horror Roleplaying:
+- Vaesen(\s*(-\s*)?Nordic\s*Horror\s*Roleplaying)?
+- [Vaesen, *the-rpg]
 
 Tales of Forge & Fortune:
 - Tales\s*of\s*Forge\s*(&|and)\s*Fortune
