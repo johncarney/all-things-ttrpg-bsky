@@ -98,8 +98,11 @@ Coyote & Crow:
 CY_BORG:
 - CY_BORG
 
-Mörk Borg:
-- M[öo]rk\s*Borg
+MÖRK BORG:
+- M[ÖO]RK\S*BORG
+
+MÖRKTOBER:
+- M[ÖO]RKTOBER
 
 Pirate Borg:
 - Pirate\s*Borg
