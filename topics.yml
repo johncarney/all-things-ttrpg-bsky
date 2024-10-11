@@ -101,7 +101,7 @@ MÖRK BORG:
 - M[ÖO]RK\S*BORG
 
 MÖRKTOBER:
-- M[ÖO]RKTOBER
+- M[ÖO]RKTOBER\s*\d*
 
 Pirate Borg:
 - Pirate\s*Borg
@@ -469,3 +469,59 @@ Covert Ops:
 
 Barebones Fantasy:
 - Barebones\s*Fantasy
+
+Girl by Moonlight:
+- Girl\s*by\s*Moonlight
+
+Band of Blades:
+- Band\s*of\s*Blades
+
+Scum and Villainy:
+- Scum\s*(and|&)\s*Villainy
+
+A Fistful of Darkness:
+- (A\s*)?Fistful\s*of\s*Darkness
+
+A NOCTURNE:
+- A\s*NOCTURNE
+- ['(A\s*)?NOCTURNE', *the-rpg]
+
+A Torch in the Dark:
+- (A\s*)?Torch\s*in\s*the\s*Dark
+
+Asphalt & Trouble:
+- Asphalt\s*(&|and)\s*Trouble
+
+Beam Saber:
+- Beam\s*Sab(er|re)
+
+Court of Blades:
+- Court\s*of\s*Blades
+
+CBR+PNK:
+- CBR\s*\+\s*PNK
+
+Copperhead County:
+- Copperhead\s*County
+
+External Containment Bureau:
+- External\s*Containment\s*Bureau
+- [ECB, *the-rpg]
+
+"Brinkwood: The Blood of Tyrants":
+- Brinkwood(:?\s*(The\s*)?Blood\s*of\s*Tyrants)?
+- Brinkwood
+- (The\s*)Blood\s*of\s*Tyrants
+- B:?tBoT
+
+Electric Bastionland:
+- (Electric\s*)?Bastionland
+
+Mythic Bastionland:
+- Mythic\s*Bastionland
+
+Runecairn:
+- Runecairn
+
+Mark of the Odd:
+- Mark\s*of\s*the\s*Odd
