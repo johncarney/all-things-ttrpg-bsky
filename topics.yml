@@ -511,7 +511,6 @@ External Containment Bureau:
 "Brinkwood: The Blood of Tyrants":
 - Brinkwood(:?\s*(The\s*)?Blood\s*of\s*Tyrants)?
 - Brinkwood
-- (The\s*)Blood\s*of\s*Tyrants
 - B:?tBoT
 
 Electric Bastionland:
