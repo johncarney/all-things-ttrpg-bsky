@@ -11,10 +11,11 @@
 # General topics
 
 Tabletop RPGs:
-- TTRPG(Sky|s)?
+- TTRPGSky
 - Tabletop\s*RPGs?
 - Pen\s*(-?and-?|&)\s*Paper\s*RPGs?
 - Juegos\s*de\s*rol(\s*de\s*mesa)?
+- '#?\w*TTRPG\w*'
 
 # Publishers
 
