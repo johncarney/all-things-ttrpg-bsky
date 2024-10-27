@@ -525,3 +525,8 @@ Runecairn:
 
 Mark of the Odd:
 - Mark\s*of\s*the\s*Odd
+
+Discworld RPG:
+- Discworld(\s*RPG)?:?\s*Adventures\s*in\s*Ankh(-|\s*)Morpork
+- [Discworld, *the-rpg]
+- Adventures\s*in\s*Ankh(-|\s*)Morpork
